@@ -16,4 +16,6 @@
 <fullyQualifiedTypeName name="kr.co.service.BoardService"/>
 <fullyQualifiedTypeName name="kr.co.vo.BoardVO"/>
 <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
 </qualifiedTypeNameHistroy>
