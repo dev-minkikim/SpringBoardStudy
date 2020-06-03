@@ -11,11 +11,30 @@
 </head>
 <script type="text/javascript">
 	$(document).ready(function(){
+		let formObj = $("form[name='updateForm']");
+		
 		$(".cancel_btn").on("click",function(){
 			event.preventDefault();
 			location.href="/board/list";
 		})
+		$(".update_btn").on("click",function(){
+			if(fn_valiCheck()){
+				return false;
+			}
+			formObj.attr("action","/board/update");
+			formObj.attr("method","post");
+			formObj.submit();
+		})
 	})
+	function fn_valiCheck(){
+		let updateForm = $("form[name='updateForm'] .chk").length;
+		for(let i=0;i<updateForm; i++){
+			if($(".chk").eq(i).val()==""||$(".chk").eq(i).val()==null){
+				alert($(".chk").eq(i).attr("title"));
+				return true;
+			}
+		}
+	}
 </script>
 <body>
 	<div id="root">
@@ -23,9 +42,9 @@
 			<h1>게시판</h1>
 		</header>
 		<hr>
-		<nav>
-			홈 - 글 작성
-		</nav>
+		<div>
+			<%@include file="nav.jsp" %>
+		</div>
 		<hr>
 		<section id="container">
 			<form name="updateForm" role="form" method="post" action="/board/update">
@@ -35,13 +54,13 @@
 						<tr>
 							<td>
 								<label for="title">제목</label>
-								<input type="text" id="title" name="title" value="${update.title}"/>
+								<input type="text" id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요."/>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<label for="content">내용</label>
-								<textarea id="content" name="content"><c:out value="${update.content}"/></textarea>
+								<textarea id="content" name="content" class="chk" title="내용을 입력하세요."><c:out value="${update.content}"/></textarea>
 							</td>
 						</tr>
 						<tr>

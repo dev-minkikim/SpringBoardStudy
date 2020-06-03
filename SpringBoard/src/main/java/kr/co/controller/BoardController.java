@@ -33,7 +33,7 @@ public class BoardController {
 		
 		service.write(boardVO);
 		
-		return "redirect:/";
+		return "redirect:/board/list";
 	}
 	
 	//게시물 목록 조회
